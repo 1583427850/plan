@@ -24,10 +24,10 @@ jobs:
           echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
 
       - name: Build Docker image
-        run: docker build -t goPlan:latest .
+        run: docker build -t go_plan:latest .
 
       - name: Push Docker image
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         run: |
-          docker push 1583427850/goPlan:latest
+          docker push 1583427850/go_plan:latest
