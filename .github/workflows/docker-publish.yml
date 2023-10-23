@@ -30,4 +30,5 @@ jobs:
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         run: |
+          docker tag onlinejudge:latest 1583427850/go_plan:latest
           docker push 1583427850/go_plan:latest
