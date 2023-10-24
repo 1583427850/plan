@@ -29,6 +29,7 @@ func ListTodos(c *gin.Context) {
 func UpdateTodosStatus(c *gin.Context) {
 	todo := new(model.Todo)
 	id := c.Param("id")
+	c.BindJSON(&todo)
 	err := todos.UpdateStatus(id, todo)
 	if err != nil {
 		panic(err)

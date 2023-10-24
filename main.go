@@ -15,7 +15,7 @@ func init() {
 func main() {
 
 	//注册路由并启动gin
-	if err := route.InitRoute().Run(); err != nil {
+	if err := route.InitRoute().Run(":8081"); err != nil {
 		panic(err)
 	}
 

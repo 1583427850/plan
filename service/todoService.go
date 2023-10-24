@@ -15,12 +15,13 @@ func CreateTodo(todo *model.Todo) error {
 
 func UpdateStatus(id string, todo *model.Todo) error {
 	//判断对应数据是否存在
-	_, err := dao.GetTodoById(id)
+	oldTdo, err := dao.GetTodoById(id)
 	if errors.Is(gorm.ErrRecordNotFound, err) {
 		return err
 	}
 	//更新
-	return config.DB.Save(&todo).Error
+	todo.Title = oldTdo.Title
+	return config.DB.Model(&model.Todo{}).Where("id=?", oldTdo.ID).Update("status", todo.Status).Error
 }
 
 func ListTodos() (todos []model.Todo, err error) {
